@@ -1,14 +1,12 @@
-# Data_Visualization Final Project 
-
-
-
-# Data Visualization Final Project –Visualizing Complexity
+# Data Visualization Final Project – "Visualizing Complexity"
 
 I wanted to center my final project on the notion that “positivity” and “compassion” are also contagious instead of the negativity and bleakness of the situation and circumstances produced by Covid-19. However, the data tells a different story. I decided to tell a story of the harsh realities and true sentiments brought forth by this deadly pandemic. 
-Data Pre-Processing: 
-Data Source: 
+
+# Data Pre-Processing 
+
 After extracting a dataset from Kaggle which consisted of tweets of users who have applied the following hashtags: #coronavirus, #coronavirusoutbreak, #coronavirusPandemic, #covid19, #covid_19, #epitwitter, #ihavecorona, #StayHomeStaySafe, #TestTraceIsolate. It contained different variables associated with Twitter including:  the text, the count of retweets, user name, retweet count, country code, language. The hashtag #coronavirus was the most frequently used. The original dataset included 390263 entries and contained 22 different columns. I filtered the tweets based on language and extracted a subset of tweets written in English. I had to reduce the dimensionality of the dataset even further so I started cleaning after extracting positive and negative sentiment scores for each tweet. I removed tweets that had scores of 0 for both positive and negative polarity. 
 
+Data Source: https://www.kaggle.com/smid80/coronavirus-covid19-tweets 
 
 # Sentiment and Emotion Analysis using VADER (Python) & Syuzhet ( R ) 
 
