@@ -1,0 +1,89 @@
+---
+title: "R Notebook"
+output: html_notebook
+editor_options: 
+  chunk_output_type: inline
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter*. 
+
+```{r}
+install.packages("tidytext")
+library(tidytext)
+install.packages("textdata")
+```
+
+
+
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd+Option+I*.
+```{r}
+
+
+install.packages("textdata")
+install.packages("syuzhet")
+library(syuzhet)
+my_example_text <- 
+
+  "I begin this story with a neutral statement.  
+  Basically this is a very silly test.  
+  You are testing the Syuzhet package using short, inane sentences.  
+  I am actually very happy today. 
+  I have finally finished writing this package.  
+  Tomorrow I will be very sad. 
+  I won't have anything left to do. 
+  I might get angry and decide to do something horrible.  
+  I might destroy the entire package and start from scratch.  
+  Then again, I might find it satisfying to have completed my first R package. 
+  Honestly this use of the Fourier transformation is really quite elegant.  
+  You might even say it's beautiful!"
+
+
+
+s_v <- get_sentences(my_example_text)
+
+class(s_v)
+
+str(s_v)
+
+head(s_v)
+
+```
+
+```{r}
+nrc_data <- get_nrc_sentiment(s_v)
+
+angry_items <- which(nrc_data$anger > 0)
+s_v[angry_items]
+
+joy_items <- which(nrc_data$joy > 0)
+s_v[joy_items]
+
+
+
+install.packages("pander")
+library(pander)
+
+pander::pandoc.table(nrc_data[, 1:8], split.table = Inf)
+```
+
+```{r}
+s_v[joy_items]
+```
+
+```{r}
+barplot(
+  sort(colSums(prop.table(nrc_data[, 1:8]))), 
+  horiz = TRUE, 
+  cex.names = 0.7, 
+  las = 1, 
+  main = "Emotional Analysis of Tweets", xlab="Percentage"
+  )
+```
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Cmd+Shift+K* to preview the HTML file). 
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+
